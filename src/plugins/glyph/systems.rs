@@ -35,12 +35,12 @@ pub fn update(
             None => glyph_atlas.background_color,
         };
 
-        // commands.entity(entity).insert(MaterialMesh2dBundle {
-        //     mesh: meshes.add(Mesh::from(shape::Quad::default())).into(),
-        //     material: materials.add(ColorMaterial::from(background_color)),
-        //     transform: Transform::from_scale(Vec3::splat(12.0)),
-        //     ..default()
-        // });
+        commands.entity(entity).insert(MaterialMesh2dBundle {
+            mesh: meshes.add(Mesh::from(shape::Quad::default())).into(),
+            material: materials.add(ColorMaterial::from(background_color)),
+            transform: Transform::from_scale(Vec3::splat(120.0)),
+            ..default()
+        });
 
         commands.entity(entity).insert(SpriteSheetBundle {
             sprite: TextureAtlasSprite {

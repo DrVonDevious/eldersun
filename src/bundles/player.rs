@@ -5,7 +5,6 @@ use crate::{components::{tags::Player, position::Position}, plugins::glyph::comp
 #[derive(Bundle)]
 pub struct PlayerBundle {
     pub tag: Player,
-    pub camera: Camera2dBundle,
     pub position: Position,
     pub glyph: Glyph,
 }
@@ -16,15 +15,6 @@ impl Default for PlayerBundle {
 
         Self {
             tag: Player,
-            camera: Camera2dBundle {
-                projection: OrthographicProjection {
-                    far: 1000.0,
-                    near: -1000.0,
-                    scale: 1.0,
-                    ..default()
-                },
-                ..default()
-            },
             position: position.clone(),
             glyph: Glyph {
                 index: '@' as usize,

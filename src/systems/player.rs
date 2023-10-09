@@ -7,6 +7,8 @@ pub fn setup(
 ) {
     commands.spawn(PlayerBundle::default());
 
+    commands.spawn(Camera2dBundle::default());
+
     commands.spawn((
         Glyph {
             index: 'r' as usize,
@@ -17,6 +19,17 @@ pub fn setup(
             ..default()
         },
     ));
+}
+
+pub fn camera_follow(
+    player_query: Query<&Transform, With<Player>>,
+    mut camera_query: Query<&mut Transform, (With<Camera>, Without<Player>)>,
+) {
+    for player_transform in player_query.iter() {
+        for mut camera_transform in camera_query.iter_mut() {
+            camera_transform.translation = player_transform.translation;
+        }
+    }
 }
 
 pub fn handle_controls(
