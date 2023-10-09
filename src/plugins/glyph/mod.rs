@@ -13,9 +13,23 @@ pub struct Tileset {
 pub struct GlyphAtlas {
     pub tileset: String,
     pub glyph_size: Vec2,
+    pub background_color: Color,
     pub columns: usize,
     pub rows: usize,
     pub scale: f32,
+}
+
+impl Default for GlyphAtlas {
+    fn default() -> Self {
+        Self {
+            tileset: "tileset.png".to_string(),
+            glyph_size: Vec2::new(16.0, 16.0),
+            background_color: Color::BLACK,
+            columns: 32,
+            rows: 32,
+            scale: 1.0,
+        }
+    }
 }
 
 pub struct GlyphPlugin {

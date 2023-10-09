@@ -1,4 +1,4 @@
-use bevy::prelude::*;
+use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
 
 use super::{Tileset, GlyphAtlas, components::Glyph};
 
@@ -25,13 +25,27 @@ pub fn update(
     mut commands: Commands,
     glyph_atlas: Res<GlyphAtlas>,
     tileset: Res<Tileset>,
-    query: Query<(Entity, &Glyph)>
+    query: Query<(Entity, &Glyph)>,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     for (entity, glyph) in query.iter() {
+        let background_color = match glyph.bg {
+            Some(color) => color,
+            None => glyph_atlas.background_color,
+        };
+
+        // commands.entity(entity).insert(MaterialMesh2dBundle {
+        //     mesh: meshes.add(Mesh::from(shape::Quad::default())).into(),
+        //     material: materials.add(ColorMaterial::from(background_color)),
+        //     transform: Transform::from_scale(Vec3::splat(12.0)),
+        //     ..default()
+        // });
+
         commands.entity(entity).insert(SpriteSheetBundle {
             sprite: TextureAtlasSprite {
                 index: glyph.index,
-                color: glyph.color,
+                color: glyph.fg,
                 ..default()
             },
             texture_atlas: tileset.handle.clone(),
