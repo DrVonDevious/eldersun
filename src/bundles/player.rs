@@ -1,12 +1,13 @@
 use bevy::prelude::*;
 
-use crate::{components::{tags::Player, position::Position}, plugins::glyph::components::Glyph};
+use crate::{components::{tags::Player, position::Position}, plugins::{glyph::components::Glyph, action_queue::components::ActionQueue}};
 
 #[derive(Bundle)]
 pub struct PlayerBundle {
     pub tag: Player,
     pub position: Position,
     pub glyph: Glyph,
+    pub action_queue: ActionQueue,
 }
 
 impl Default for PlayerBundle {
@@ -23,6 +24,7 @@ impl Default for PlayerBundle {
                 y: position.y,
                 ..default()
             },
+            action_queue: ActionQueue::with_interval(0.2),
         }
     }
 }

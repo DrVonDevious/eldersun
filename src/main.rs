@@ -1,6 +1,6 @@
 use bevy::{prelude::*, window::WindowResolution};
 use palette::Palette;
-use plugins::glyph::{GlyphAtlas, GlyphPlugin};
+use plugins::{glyph::{GlyphAtlas, GlyphPlugin}, action_queue::ActionQueuePlugin};
 
 pub mod bundles;
 pub mod components;
@@ -33,6 +33,8 @@ fn main() {
             scale: 1.0,
         },
     });
+
+    app.add_plugins(ActionQueuePlugin);
 
     app.add_systems(Startup, systems::player::setup);
     app.add_systems(Update, (

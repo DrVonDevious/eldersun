@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{bundles::player::PlayerBundle, plugins::glyph::components::Glyph, components::{position::Position, tags::Player}};
+use crate::{bundles::player::PlayerBundle, plugins::{glyph::components::Glyph, action_queue::components::ActionQueue}, components::{position::Position, tags::Player}};
 
 pub fn setup(
     mut commands: Commands
@@ -34,29 +34,35 @@ pub fn camera_follow(
 
 pub fn handle_controls(
     keyboard_input: Res<Input<KeyCode>>,
-    mut query: Query<&mut Position, With<Player>>,
+    mut query: Query<(&mut Position, &mut ActionQueue), With<Player>>,
 ) {
-    for mut position in query.iter_mut() {
-        let mut direction = Vec2::ZERO;
+    for (mut position, mut action_queue) in query.iter_mut() {
+        if action_queue.ready {
+            let mut direction = Vec2::ZERO;
 
-        if keyboard_input.pressed(KeyCode::A) {
-            direction.x -= 1.0;
-        }
-        if keyboard_input.pressed(KeyCode::D) {
-            direction.x += 1.0;
-        }
-        if keyboard_input.pressed(KeyCode::W) {
-            direction.y += 1.0;
-        }
-        if keyboard_input.pressed(KeyCode::S) {
-            direction.y -= 1.0;
-        }
+            if keyboard_input.pressed(KeyCode::A) {
+                direction.x -= 1.0;
+                action_queue.next();
+            }
+            if keyboard_input.pressed(KeyCode::D) {
+                direction.x += 1.0;
+                action_queue.next();
+            }
+            if keyboard_input.pressed(KeyCode::W) {
+                direction.y += 1.0;
+                action_queue.next();
+            }
+            if keyboard_input.pressed(KeyCode::S) {
+                direction.y -= 1.0;
+                action_queue.next();
+            }
 
-        if direction != Vec2::ZERO {
-            direction = direction.normalize();
-        }
+            if direction != Vec2::ZERO {
+                direction = direction.normalize();
+            }
 
-        position.x += direction.x as i32;
-        position.y += direction.y as i32;
+            position.x += direction.x as i32;
+            position.y += direction.y as i32;
+        }
     }
 }
