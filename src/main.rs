@@ -30,7 +30,7 @@ fn main() {
             background_color: Palette::BLUE,
             columns: 32,
             rows: 8,
-            scale: 2.0,
+            scale: 1.0,
         },
     });
 

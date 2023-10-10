@@ -15,7 +15,7 @@ pub fn setup(
             fg: Color::RED,
             bg: Some(Color::GREEN),
             x: -9,
-            y: 12,
+            y: 6,
             ..default()
         },
     ));
