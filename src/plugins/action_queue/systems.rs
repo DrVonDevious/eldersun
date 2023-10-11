@@ -12,8 +12,6 @@ pub fn update(
         }
 
         if action_queue.timer.finished() {
-            println!("ActionQueue timer finished");
-
             action_queue.timer.reset();
             action_queue.ready = true;
         }

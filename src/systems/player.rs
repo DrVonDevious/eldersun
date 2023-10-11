@@ -6,7 +6,6 @@ pub fn setup(
     mut commands: Commands
 ) {
     commands.spawn(PlayerBundle::default());
-
     commands.spawn(Camera2dBundle::default());
 
     commands.spawn((
@@ -22,7 +21,7 @@ pub fn setup(
 }
 
 pub fn camera_follow(
-    player_query: Query<&Transform, With<Player>>,
+    player_query: Query<&mut Transform, With<Player>>,
     mut camera_query: Query<&mut Transform, (With<Camera>, Without<Player>)>,
 ) {
     for player_transform in player_query.iter() {

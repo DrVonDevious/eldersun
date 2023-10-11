@@ -40,8 +40,9 @@ fn main() {
     app.add_systems(Update, (
         systems::movement::update,
         systems::player::handle_controls,
-        systems::player::camera_follow,
     ));
+
+    app.add_systems(PostUpdate, systems::player::camera_follow);
 
     app.insert_resource(ClearColor(Color::BLACK));
 

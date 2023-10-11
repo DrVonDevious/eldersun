@@ -3,7 +3,7 @@ use bevy::prelude::*;
 use crate::{plugins::glyph::components::Glyph, components::position::Position};
 
 pub fn update(
-    mut query: Query<(&mut Glyph, &Position)>,
+    mut query: Query<(&mut Glyph, &Position), Without<Camera>>,
 ) {
     for (mut glyph, position) in query.iter_mut() {
         glyph.x = position.x;
