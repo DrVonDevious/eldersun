@@ -27,7 +27,7 @@ fn main() {
         glyph_atlas: GlyphAtlas {
             tileset: "cp437_8x16.png".to_string(),
             glyph_size: Vec2::new(8.0, 16.0),
-            background_color: Palette::BLUE,
+            background_color: Palette::BLACK,
             columns: 32,
             rows: 8,
             scale: 1.0,
@@ -44,7 +44,7 @@ fn main() {
 
     app.add_systems(PostUpdate, systems::player::camera_follow);
 
-    app.insert_resource(ClearColor(Color::BLACK));
+    app.insert_resource(ClearColor(Palette::BLACK));
 
     app.run();
 }

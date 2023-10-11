@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{bundles::player::PlayerBundle, plugins::{glyph::components::Glyph, action_queue::components::ActionQueue}, components::{position::Position, tags::Player}};
+use crate::{bundles::player::PlayerBundle, plugins::{glyph::components::Glyph, action_queue::components::ActionQueue}, components::{position::Position, tags::Player}, palette::Palette};
 
 pub fn setup(
     mut commands: Commands
@@ -11,8 +11,7 @@ pub fn setup(
     commands.spawn((
         Glyph {
             index: 'r' as usize,
-            fg: Color::RED,
-            bg: Some(Color::GREEN),
+            fg: Palette::RED,
             x: -9,
             y: 6,
             ..default()

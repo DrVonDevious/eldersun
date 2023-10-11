@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{components::{tags::Player, position::Position}, plugins::{glyph::components::Glyph, action_queue::components::ActionQueue}};
+use crate::{components::{tags::Player, position::Position}, plugins::{glyph::components::Glyph, action_queue::components::ActionQueue}, palette::Palette};
 
 #[derive(Bundle)]
 pub struct PlayerBundle {
@@ -19,7 +19,7 @@ impl Default for PlayerBundle {
             position: position.clone(),
             glyph: Glyph {
                 index: '@' as usize,
-                fg: Color::WHITE,
+                fg: Palette::WHITE,
                 x: position.x,
                 y: position.y,
                 ..default()

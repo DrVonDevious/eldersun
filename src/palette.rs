@@ -3,22 +3,22 @@ use bevy::prelude::Color;
 pub enum Palette {}
 
 impl Palette {
-    pub const RED: Color = Color::rgb(202.0, 86.0, 62.0);
-    pub const ORANGE: Color = Color::rgb(232.0, 134.0, 78.0);
-    pub const PEACH: Color = Color::rgb(241.0, 186.0, 142.0);
-    pub const FLAX: Color = Color::rgb(236.0, 217.0, 153.0);
-    pub const WHITE: Color = Color::rgb(241.0, 240.0, 217.0);
-    pub const TEAL: Color = Color::rgb(165.0, 219.0, 208.0);
-    pub const STEEL: Color = Color::rgb(148.0, 193.0, 186.0);
-    pub const BLUE: Color = Color::rgb(78.0, 169.0, 193.0);
-    pub const GRAY: Color = Color::rgb(55.0, 59.0, 66.0);
-    pub const LAVENDER: Color = Color::rgb(132.0, 123.0, 143.0);
-    pub const BROWN: Color = Color::rgb(109.0, 66.0, 62.0);
-    pub const TAN: Color = Color::rgb(143.0, 101.0, 64.0);
-    pub const GOLD: Color = Color::rgb(170.0, 133.0, 55.0);
-    pub const YELLOW: Color = Color::rgb(231.0, 181.0, 80.0);
-    pub const SAGE: Color = Color::rgb(164.0, 173.0, 103.0);
-    pub const GREEN: Color = Color::rgb(100.0, 148.0, 81.0);
-    pub const SEA: Color = Color::rgb(62.0, 107.0, 90.0);
-    pub const BLACK: Color = Color::rgb(35.0, 35.0, 35.0);
+    pub const RED: Color = Color::rgb(0.792, 0.337, 0.262);
+    pub const ORANGE: Color = Color::rgb(0.909, 0.525, 0.305);
+    pub const PEACH: Color = Color::rgb(0.945, 0.729, 0.556);
+    pub const FLAX: Color = Color::rgb(0.925, 0.850, 0.600);
+    pub const WHITE: Color = Color::rgb(0.945, 0.941, 0.850);
+    pub const TEAL: Color = Color::rgb(0.647, 0.858, 0.815);
+    pub const STEEL: Color = Color::rgb(148.0, 0.756, 0.729);
+    pub const BLUE: Color = Color::rgb(0.305, 0.662, 0.756);
+    pub const GRAY: Color = Color::rgb(0.215, 0.231, 0.258);
+    pub const LAVENDER: Color = Color::rgb(0.517, 0.482, 0.560);
+    pub const BROWN: Color = Color::rgb(0.427, 0.258, 0.243);
+    pub const TAN: Color = Color::rgb(0.560, 0.396, 0.250);
+    pub const GOLD: Color = Color::rgb(0.666, 0.521, 0.215);
+    pub const YELLOW: Color = Color::rgb(0.905, 0.709, 0.313);
+    pub const SAGE: Color = Color::rgb(0.643, 0.678, 0.403);
+    pub const GREEN: Color = Color::rgb(0.392, 0.580, 0.317);
+    pub const SEA: Color = Color::rgb(0.243, 0.419, 0.352);
+    pub const BLACK: Color = Color::rgb(0.137, 0.137, 0.137);
 }
