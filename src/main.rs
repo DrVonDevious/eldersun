@@ -1,6 +1,6 @@
 use bevy::{prelude::*, window::WindowResolution};
 use palette::Palette;
-use plugins::{glyph::{GlyphAtlas, GlyphPlugin}, action_queue::ActionQueuePlugin};
+use plugins::{glyph::{GlyphAtlas, GlyphPlugin}, action_queue::ActionQueuePlugin, map::{MapConfig, MapPlugin}};
 
 pub mod bundles;
 pub mod components;
@@ -34,9 +34,20 @@ fn main() {
         },
     });
 
+    app.add_plugins(MapPlugin {
+        map_config: MapConfig {
+            width: 2,
+            height: 2,
+            seed: "arda".to_string(),
+        },
+    });
+
     app.add_plugins(ActionQueuePlugin);
 
-    app.add_systems(Startup, systems::player::setup);
+    app.add_systems(Startup, (
+        systems::player::setup,
+    ));
+
     app.add_systems(Update, (
         systems::movement::update,
         systems::player::handle_controls,
