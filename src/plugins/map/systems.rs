@@ -30,24 +30,22 @@ pub fn generate_map(mut commands: Commands, map_config: Res<MapConfig>) {
                 y,
             };
 
-            generate_chunk(&mut commands, chunk, &map_config);
+            generate_chunk(&mut commands, chunk, &mut random);
         }
     }
 }
 
-pub fn generate_chunk(commands: &mut Commands, chunk: Chunk, config: &MapConfig) {
+pub fn generate_chunk(commands: &mut Commands, chunk: Chunk, rng: &mut Pcg64) {
     match chunk.biome {
-        BiomeType::Forest => generate_forest_biome(commands, chunk, config),
+        BiomeType::Forest => generate_forest_biome(commands, chunk, rng),
         BiomeType::Field => generate_field_biome(commands, chunk),
     }
 }
 
-pub fn generate_forest_biome(commands: &mut Commands, chunk: Chunk, config: &MapConfig) {
-    let mut random: Pcg64 = Seeder::from(config.seed.clone()).make_rng();
-
+pub fn generate_forest_biome(commands: &mut Commands, chunk: Chunk, rng: &mut Pcg64) {
     for x in 0..chunk.size {
         for y in 0..chunk.size {
-            let random_number = random.next_u32() % 100;
+            let random_number = rng.next_u32() % 100;
 
             if random_number < 10 {
                 commands.spawn(TileBundle {

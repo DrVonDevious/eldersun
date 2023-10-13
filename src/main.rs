@@ -16,7 +16,7 @@ fn main() {
             primary_window: Some(Window {
                 title: "Eldersun".to_string(),
                 resolution: WindowResolution::new(1280.0, 720.0),
-                resizable: false,
+                resizable: true,
                 ..default()
             }),
             ..default()
@@ -36,8 +36,8 @@ fn main() {
 
     app.add_plugins(MapPlugin {
         map_config: MapConfig {
-            width: 2,
-            height: 2,
+            width: 16,
+            height: 8,
             seed: "arda".to_string(),
         },
     });
