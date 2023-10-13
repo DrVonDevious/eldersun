@@ -11,3 +11,6 @@ opt-level = 3
 
 [dependencies]
 bevy = "0.11.3"
+rand = "0.8.5"
+rand_seeder = "0.2.3"
+rand_pcg = "0.3.1"
